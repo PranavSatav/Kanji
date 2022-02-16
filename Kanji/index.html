@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>漢字 Kanji | Obito</title>
+    <meta name="description" content="URL selfhosting content">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.4/tailwind.min.css">
+
+    <script src="https://obito.ml/kanji/lzstring.js" type="text/javascript"></script>
+    <script src="https://obito.ml/kanji/crypt.js" type="text/javascript"></script>
+    <style>
+    img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+display: none;}
+
+
+  .c{
+          margin-left:20px;
+          margin-top:10px;
+      }
+      
+      .colorr {
+          color:red;
+      }
+ 
+
+
+    </style>
+    <script type="text/javascript">
+      const getUrl = (url) => {
+        const link = document.createElement("a")
+        link.href = url
+        const path = [
+          link.protocol,
+          '//',
+          link.host,
+          link.pathname,
+          link.search,
+          link.hash,
+        ].join('')
+
+        document.getElementById('link').textContent = path
+        document.getElementById('link').href = path
+      }
+
+      const encrypt = () => {
+        const newKey = document.getElementById('newkey').value
+
+        if (newKey.length == 0) {
+          alert('Password Cannot be Empty!')
+          return
+        }
+
+        const content = document.getElementById('page').value
+        const s = mjsCrypt.encryptUint8Array(
+          LZString.compressToUint8Array(content), newKey)
+        const url = 'view.html'+'#'+s+"#" + ''
+        getUrl(url)
+      }
+    </script>
+  </head>
+  <body>
+      <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.tailgrids.com/tailgrids-fallback.css" />
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- ====== Navbar Section Start -->
+    <header
+      x-data="
+        {
+          navbarOpen: false,
+        }
+      "
+      class="absolute z-50 w-full left-0 top-0"
+    >
+      <div class="container">
+        <div class="flex -mx-4 items-center justify-between relative">
+          <div class="px-4 w-60 max-w-full">
+            <a href="javascript:void(0)" class="w-full block py-5">
+              <img
+                src="https://i.imgur.com/3HewRiE.png"
+                alt="logo"
+                class="w-full"
+              />
+            </a>
+          </div>
+          <div class="flex px-4 justify-between items-center w-full">
+            <div>
+             
+               
+           
+            
+            </div>
+            <div class="sm:flex justify-end hidden pr-16 lg:pr-0">
+            <ul class="blcok lg:flex">
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      class="
+                        text-base
+                        font-medium
+                        text-dark
+                        hover:text-primary
+                        py-2
+                        lg:inline-flex
+                        flex
+                        lg:ml-12
+                      "
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      class="
+                        text-base
+                        font-medium
+                        text-dark
+                        hover:text-primary
+                        py-2
+                        lg:inline-flex
+                        flex
+                        lg:ml-12
+                      "
+                    >
+                     Github
+                    </a>
+                  </li>
+                  <li>
+               
+                  </li>
+                </ul>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ====== Navbar Section End -->
+
+    <!-- ====== Hero Section Start -->
+    <div class="relative pt-[120px] lg:pt-[150px] pb-[110px] bg-white">
+      <div class="container">
+        <div class="flex flex-wrap -mx-4">
+          <div class="w-full lg:w-5/12 px-4">
+            <div class="hero-content">
+     
+        <div class="sm:text-center lg:text-left">
+          <!--<h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+            <span class="block xl:inline">Text Storage Solution</span>
+            <span class="block text-indigo-600 xl:inline"> - 漢字 / Kanji</span>
+          </h1> -->
+          <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+      <span class="block">Text Storage Solution</span>
+      <span class="block text-indigo-600">- 漢字 / Kanji</span>
+    </h2>
+          <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">How secure is it? The contents of you page is compressed using LZString.js and encrypted using mjsCrypt.js, and stored in <b>Unique</b> hash.</p>
+   
+        </div>
+     <br/>
+             
+        
+          
+          
+       <textarea
+      class="
+        form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+       
+        rounded
+        rounded-lg w-full 
+                bg-white border-1 border-gray-300 placeholder-gray-600 shadow-md
+                focus:placeholder-gray-500
+                focus:bg-white 
+                focus:border-gray-600  
+                focus:outline-none
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      "
+      id="page"
+      rows="7"
+      placeholder="Enter your text here!"
+    ></textarea>
+    
+    
+      
+ <div class="py-2" x-data="{ show: true }">
+                <span class="px-1 text-sm text-gray-600">Password - Longer, the better.</span>
+                <div class="relative">
+                  <input placeholder="" :type="show ? 'password' : 'text'" id="newkey" class="text-md block px-3 py-2 rounded-lg w-full 
+                bg-white border-1 border-gray-300 placeholder-gray-600 shadow-md
+                focus:placeholder-gray-500
+                focus:bg-white 
+                focus:border-gray-600  
+                focus:outline-none">
+                  <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+
+                    <svg class="h-6 text-gray-700" fill="none" @click="show = !show"
+                      :class="{'hidden': !show, 'block':show }" xmlns="http://www.w3.org/2000/svg"
+                      viewbox="0 0 576 512">
+                      <path fill="currentColor"
+                        d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z">
+                      </path>
+                    </svg>
+
+                    <svg class="h-6 text-gray-700" fill="none" @click="show = !show"
+                      :class="{'block': !show, 'hidden':show }" xmlns="http://www.w3.org/2000/svg"
+                      viewbox="0 0 640 512">
+                      <path fill="currentColor"
+                        d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z">
+                      </path>
+                    </svg>
+
+                  </div>
+                </div>
+              </div>
+
+<br/>
+
+
+   <a
+                onclick="encrypt()"
+                class="
+                  text-base
+                  font-medium
+                  text-white
+                  bg-primary
+                  rounded-lg
+                  py-3
+                  px-7
+                  hover:bg-opacity-90
+                "
+              >
+                Build Page
+              </a>
+      
+              <div class="clients pt-16">
+                <h6
+                  class="
+                    font-normal
+                    text-xs
+                    flex
+                    items-center
+                    text-body-color
+                    mb-2
+                  "
+                >
+                  🧷 your secret URL will be generated here
+                  <span
+                    class="w-8 h-[1px] bg-body-color inline-block ml-2"
+                  ></span>
+                </h6>
+                
+                
+                  <p>
+       <a class="colorr" id="link"></a>
+    </p>
+              </div>
+            </div>
+          </div>
+          <div class="hidden lg:block lg:w-1/12 px-4"></div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="lg:text-right lg:ml-auto">
+              <div class="relative inline-block z-10 pt-11 lg:pt-0">
+                <img
+                  src="https://www.nicepng.com/png/full/3-36612_anime-png-tumblr-koe-no-katachi-chibi.png"
+                  alt="hero"
+                  class="max-w-full lg:ml-auto"
+                />
+                <span class="absolute -left-8 -bottom-8 z-[-1]">
+                  <svg
+                    width="93"
+                    height="93"
+                    viewBox="0 0 93 93"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="2.5" cy="2.5" r="2.5" fill="#3056D3" />
+                    <circle cx="2.5" cy="24.5" r="2.5" fill="#3056D3" />
+                    <circle cx="2.5" cy="46.5" r="2.5" fill="#3056D3" />
+                    <circle cx="2.5" cy="68.5" r="2.5" fill="#3056D3" />
+                    <circle cx="2.5" cy="90.5" r="2.5" fill="#3056D3" />
+                    <circle cx="24.5" cy="2.5" r="2.5" fill="#3056D3" />
+                    <circle cx="24.5" cy="24.5" r="2.5" fill="#3056D3" />
+                    <circle cx="24.5" cy="46.5" r="2.5" fill="#3056D3" />
+                    <circle cx="24.5" cy="68.5" r="2.5" fill="#3056D3" />
+                    <circle cx="24.5" cy="90.5" r="2.5" fill="#3056D3" />
+                    <circle cx="46.5" cy="2.5" r="2.5" fill="#3056D3" />
+                    <circle cx="46.5" cy="24.5" r="2.5" fill="#3056D3" />
+                    <circle cx="46.5" cy="46.5" r="2.5" fill="#3056D3" />
+                    <circle cx="46.5" cy="68.5" r="2.5" fill="#3056D3" />
+                    <circle cx="46.5" cy="90.5" r="2.5" fill="#3056D3" />
+                    <circle cx="68.5" cy="2.5" r="2.5" fill="#3056D3" />
+                    <circle cx="68.5" cy="24.5" r="2.5" fill="#3056D3" />
+                    <circle cx="68.5" cy="46.5" r="2.5" fill="#3056D3" />
+                    <circle cx="68.5" cy="68.5" r="2.5" fill="#3056D3" />
+                    <circle cx="68.5" cy="90.5" r="2.5" fill="#3056D3" />
+                    <circle cx="90.5" cy="2.5" r="2.5" fill="#3056D3" />
+                    <circle cx="90.5" cy="24.5" r="2.5" fill="#3056D3" />
+                    <circle cx="90.5" cy="46.5" r="2.5" fill="#3056D3" />
+                    <circle cx="90.5" cy="68.5" r="2.5" fill="#3056D3" />
+                    <circle cx="90.5" cy="90.5" r="2.5" fill="#3056D3" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ====== Hero Section End -->
+      
+      
+    
+
+
+    
+  </body>
+</html>
